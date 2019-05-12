@@ -29,7 +29,7 @@ import java.util.Properties;
 @Configuration
 @EnableConfigurationProperties(JpaProperties.class)
 @EnableJpaRepositories(entityManagerFactoryRef = "masterEntityManager", transactionManagerRef = "masterTransactionManager", basePackages = {
-		"com.pidas.cora.repository.master" })
+		"com.backend.boiler.plate.modules.base.data.repository" })
 @EnableTransactionManagement
 public class DatabaseConfiguration {
 	private static final Logger logger = LoggerFactory.getLogger(DatabaseConfiguration.class);
@@ -145,7 +145,7 @@ public class DatabaseConfiguration {
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
 		em.setDataSource(dataSource());
-		em.setPackagesToScan("com.pidas.cora.model.master");
+		em.setPackagesToScan("model");
 		em.setJpaVendorAdapter(vendorAdapter);
 		em.setJpaProperties(new Properties());
 		em.setPersistenceUnitName("master");

@@ -40,11 +40,11 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 		http.cors();
 		http.csrf().disable()
 			.authorizeRequests()
-			.antMatchers("/rest/**", "/dashboard/**")
+			.antMatchers("/api/**")
              .hasAnyRole(Constants.ROLE_SUPER_ADMIN, Constants.ROLE_USER)
-             .antMatchers("/api/**")
+             .antMatchers("/public/**")
              .fullyAuthenticated()
-             .antMatchers("/public/csrf", "/images/**")
+             .antMatchers("/images/**")
              .permitAll().anyRequest().authenticated()
              .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
 	}

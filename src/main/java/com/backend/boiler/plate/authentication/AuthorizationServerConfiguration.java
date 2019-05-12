@@ -35,8 +35,8 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 	@Autowired
 	private UserApprovalHandler userApprovalHandler;
 	
-//	@Autowired
-//	private UserDetailsService userDetailsService;
+	@Autowired
+	private UserDetailsService userDetailsService;
 	
 	@Autowired
 	@Qualifier("authenticationManagerBean")
@@ -63,8 +63,8 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 		endpoints.tokenStore(tokenStore()).reuseRefreshTokens(false).userApprovalHandler(userApprovalHandler)
-		.authenticationManager(authenticationManager);
-		//.userDetailsService(userDetailsService);
+		.authenticationManager(authenticationManager)
+		.userDetailsService(userDetailsService);
 	}
 	
 	@Bean
